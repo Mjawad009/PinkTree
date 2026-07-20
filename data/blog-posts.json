@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "when-off-the-shelf-software-stops-being-enough",
+    "title": "When off-the-shelf software stops being enough",
+    "excerpt": "Most businesses outgrow generic tools quietly, one workaround at a time. Here's how to tell when it's time for something built around your actual process.",
+    "date": "2026-06-01",
+    "readTime": "5 min read",
+    "category": "AI Strategy",
+    "content": [
+      "Every business starts with off-the-shelf tools, and for a while, that's exactly right — there's no reason to build custom software for a problem a $30-a-month subscription already solves.",
+      "The signal that something has changed is usually quiet: a spreadsheet that's become a load-bearing part of the business, a process that only one person fully understands, a tool that gets 'worked around' more than it gets used as intended.",
+      "None of that means you need to rebuild everything. It usually means one specific workflow has outgrown its generic tool, and a targeted piece of automation or custom software closes the gap without touching everything else."
+    ]
+  },
+  {
+    "slug": "what-ai-workflow-automation-actually-means",
+    "title": "What \"AI workflow automation\" actually means, in practice",
+    "excerpt": "The term gets used loosely. Here's a concrete look at what we actually build when a client asks for workflow automation.",
+    "date": "2026-05-12",
+    "readTime": "4 min read",
+    "category": "AI Solutions",
+    "content": [
+      "At its simplest, workflow automation means a conversation or event in one system automatically triggers an action in another — no one manually re-entering data or remembering to follow up.",
+      "In practice, that might look like a qualified lead from a chatbot conversation landing directly in a CRM with full context, or a document upload automatically routing to the right internal reviewer.",
+      "The value isn't the automation itself — it's the time and errors it removes from a process your team was doing manually, often several times a day."
+    ]
+  }
+]
