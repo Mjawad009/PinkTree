@@ -21,7 +21,6 @@ const footerLinks = {
     { name: "Pricing", href: "https://evasionchat.pinktree.co/pricing" },
   ],
   "Get Started": [
-    { name: "Contact", href: "/contact" },
     { name: "Book a Consultation", href: "/book-consultation" },
   ],
   Legal: [
