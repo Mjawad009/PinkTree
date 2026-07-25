@@ -23,6 +23,7 @@ export default function BlogPage() {
       <Navigation />
 
       <PageHero
+        variant="dots"
         eyebrow="Blog"
         title={
           <>
