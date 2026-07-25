@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-  "Trained on your own website, documents, and knowledge base",
+  "Trained on your authentic documents, and knowledge base maintanied by Specialists",
   "Answers customers and prospects instantly, 24/7",
   "Automations connect to 500+ apps — CRM, WhatsApp, email, and more",
   "Multi-tenant setup for agencies and multi-branch businesses",
@@ -26,6 +26,7 @@ export default function PlatformPage() {
       <Navigation />
 
       <PageHero
+        variant="network"
         eyebrow="Our Product"
         title={
           <>
