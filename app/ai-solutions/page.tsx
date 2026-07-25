@@ -8,6 +8,7 @@ import { CtaSection } from "@/components/site/cta-section";
 import { Reveal } from "@/components/site/reveal";
 import { aiSolutions } from "@/lib/ai-solutions-data";
 
+
 export const metadata: Metadata = {
   title: "AI Solutions",
   description: "Custom AI workflow automation, AI agents, knowledge base systems, enterprise integrations, and custom software development.",
