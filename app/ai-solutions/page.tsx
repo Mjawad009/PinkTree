@@ -19,6 +19,7 @@ export default function AiSolutionsPage() {
       <Navigation />
 
       <PageHero
+        variant="network"
         eyebrow="AI Solutions"
         title={
           <>
