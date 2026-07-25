@@ -174,7 +174,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-white/60">
             <span className="w-8 h-px bg-white/30" />
-            Custom AI solutions for businesses that need more than off-the-shelf
+            Custom AI solutions for businesses to grow faster and stronger
           </span>
         </div>
         
@@ -187,7 +187,7 @@ export function HeroSection() {
           >
             <span className="block whitespace-normal sm:whitespace-nowrap">We help your business</span>
             <span className="block whitespace-normal sm:whitespace-nowrap">
-              {" "}
+              {"to "}
               <span className="relative inline-block">
                 <BlurWord word={words[wordIndex]} trigger={wordIndex} />
               </span>{" "}
@@ -206,11 +206,11 @@ export function HeroSection() {
       >
         <div className="max-w-[1400px] mx-auto flex flex-wrap items-start gap-x-8 gap-y-6 lg:gap-20">
           {[
-            { value: "40+", label: "custom AI solutions built and shipped" },
-            { value: "2", label: "industries we know deeply, and growing" },
-            { value: "1", label: "flagship product, The Evasion Chat" },
+            { value: "75+", label: "custom AI solutions built and shipped" },
+            { value: "750+", label: "Hours Saved in 9 months" },
+            { value: "3×", label: "Business Capacity" },
           ].map((stat) => (
-            <div key={stat.label} className="flex flex-col gap-2 min-w-[120px]">
+            <div key={stat.label} className="flex flex-col gap-2 min-w-[150px]">
               <span className="text-3xl lg:text-4xl font-display text-white">{stat.value}</span>
               <span className="text-xs text-white/50 leading-tight">
                 {stat.label}
