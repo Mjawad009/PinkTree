@@ -46,12 +46,27 @@ export function Navigation() {
             isScrolled ? "h-14" : "h-20"
           }`}
         >
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group">
-            <span className={`font-display tracking-tight transition-all duration-500 ${isScrolled ? "text-xl text-foreground" : "text-2xl text-white"}`}>PINK TREE</span>
-            <span className={`font-mono transition-all duration-500 ${isScrolled ? "text-[10px] mt-0.5 text-muted-foreground" : "text-xs mt-1 text-white/60"}`}>TM</span>
-          </a>
-
+      {/* Logo */}
+      <a href="/" className="flex items-center gap-2 group">
+        <span
+          className={`font-display tracking-tight transition-all duration-500 ${
+            isScrolled ? "text-xl text-foreground" : "text-2xl text-white"
+          }`}
+        >
+          PINK TREE
+          <span className="text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.9)] animate-pulse">
+            E
+          </span>
+        </span>
+      
+        <span
+          className={`font-mono transition-all duration-500 ${
+            isScrolled
+              ? "text-[10px] mt-0.5 text-muted-foreground"
+              : "text-xs mt-1 text-white/60"
+          }`}
+        ></span>
+      </a>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
