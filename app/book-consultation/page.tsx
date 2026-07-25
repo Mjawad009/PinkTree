@@ -66,6 +66,7 @@ export default function BookConsultationPage() {
       <Navigation />
 
       <PageHero
+        variant="globe"
         eyebrow="Book a Consultation"
         title={
           <>
