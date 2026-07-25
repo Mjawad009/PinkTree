@@ -17,6 +17,7 @@ export default function GuidesPage() {
       <Navigation />
 
       <PageHero
+        variant="dots"
         eyebrow="Guides"
         title={
           <>
