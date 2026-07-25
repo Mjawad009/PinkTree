@@ -19,6 +19,7 @@ export default function IndustriesPage() {
       <Navigation />
 
       <PageHero
+        variant="network"
         eyebrow="Industries"
         title={
           <>
