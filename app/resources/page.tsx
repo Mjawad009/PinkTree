@@ -22,6 +22,7 @@ export default function ResourcesPage() {
       <Navigation />
 
       <PageHero
+        variant="dots"
         eyebrow="Resources"
         title={
           <>
