@@ -19,6 +19,7 @@ export default function CaseStudiesPage() {
       <Navigation />
 
       <PageHero
+        variant="dots"
         eyebrow="Case Studies"
         title={
           <>
