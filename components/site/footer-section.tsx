@@ -30,9 +30,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "Twitter", href: "#" },
-  { name: "GitHub", href: "#" },
-  { name: "LinkedIn", href: "#" },
+  { name: "", href: "#" },
+  { name: "", href: "#" },
+  { name: "", href: "#" },
 ];
 
 function AnimatedWaveCanvas() {
