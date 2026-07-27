@@ -30,9 +30,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "", href: "#" },
-  { name: "", href: "#" },
-  { name: "", href: "#" },
+  { name: "Email Us", href: "mailto:contac@pinktreee.com" },
+  { name: "LinkedIn", href: "#" },
+  { name: "Twitter", href: "#" },
 ];
 
 function AnimatedWaveCanvas() {
@@ -83,7 +83,6 @@ function AnimatedWaveCanvas() {
       animationId = requestAnimationFrame(animate);
     };
 
-    // Only animate while the footer is actually in view.
     const visibilityObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
