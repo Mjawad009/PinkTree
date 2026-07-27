@@ -45,7 +45,7 @@ export function FeaturedProductSection() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 text-base rounded-full border-foreground/20">
-                <Link href="https://evasionchat.pinktree.co">Visit product site ↗</Link>
+                <Link href="https://evasion.pinktreee.com">Visit product site ↗</Link>
               </Button>
             </div>
           </Reveal>
