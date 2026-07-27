@@ -54,9 +54,9 @@ export function Navigation() {
           }`}
         >
           PINK TREE
-          <span className="text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.9)] animate-pulse">
-            E
-          </span>
+        <span className="text-pink-400 drop-shadow-[0_0_6px_#f472b6] group-hover:drop-shadow-[0_0_14px_#f472b6] transition-all duration-500">
+          E
+        </span>
         </span>
       
         <span
@@ -83,15 +83,33 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="https://evasionchat.pinktree.co" className={`transition-all duration-500 ${isScrolled ? "text-xs text-foreground/70 hover:text-foreground" : "text-sm text-white/70 hover:text-white"}`}>
+            <a href="https://evasionchat.pinktreee.com" className={`transition-all duration-500 ${isScrolled ? "text-xs text-foreground/70 hover:text-foreground" : "text-sm text-white/70 hover:text-white"}`}>
               The Evasion Chat ↗
             </a>
             <Button
               asChild
               size="sm"
-              className={`rounded-full transition-all duration-500 ${isScrolled ? "bg-foreground hover:bg-foreground/90 text-background px-4 h-8 text-xs" : "bg-white hover:bg-white/90 text-black px-6"}`}
+              className={`group relative overflow-hidden rounded-full transition-all duration-500 ${
+                isScrolled
+                  ? "bg-foreground hover:bg-foreground/90 text-background px-4 h-8 text-xs"
+                  : "bg-white hover:bg-white/90 text-black px-6"
+              }`}
             >
-              <Link href="/book-consultation">Book Consultation</Link>
+              <Link href="/book-consultation" className="relative z-10">
+                Book Consultation
+            
+                {/* Pink shimmer */}
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
+            
+                {/* Sparkle 1 */}
+                <span className="pointer-events-none absolute top-1 left-4 h-1 w-1 rounded-full bg-pink-400 opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
+            
+                {/* Sparkle 2 */}
+                <span className="pointer-events-none absolute bottom-2 right-5 h-1.5 w-1.5 rounded-full bg-pink-300 opacity-0 group-hover:opacity-100 group-hover:animate-ping [animation-delay:150ms]" />
+            
+                {/* Sparkle 3 */}
+                <span className="pointer-events-none absolute top-2 right-8 h-1 w-1 rounded-full bg-fuchsia-300 opacity-0 group-hover:opacity-100 group-hover:animate-ping [animation-delay:300ms]" />
+              </Link>
             </Button>
           </div>
 
@@ -163,7 +181,7 @@ export function Navigation() {
               className="flex-1 rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <Link href="https://evasionchat.pinktree.co">The Evasion Chat ↗</Link>
+              <Link href="https://evasionchat.pinktreee.com">The Evasion Chat ↗</Link>
             </Button>
             <Button 
               asChild
