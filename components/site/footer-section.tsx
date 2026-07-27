@@ -16,9 +16,9 @@ const footerLinks = {
     { name: "All Resources", href: "/resources" },
   ],
   Product: [
-    { name: "The Evasion Chat", href: "https://evasionchat.pinktreee.com" },
+    { name: "The Evasion Chat", href: "https://evasion.pinktreee.com" },
     { name: "Platform Overview", href: "/platform" },
-    { name: "Pricing", href: "https://evasionchat.pinktreee.com/pricing" },
+    { name: "Pricing", href: "https://evasion.pinktreee.com/pricing" },
   ],
   "Get Started": [
     { name: "Book a Consultation", href: "/book-consultation" },
