@@ -16,9 +16,9 @@ const footerLinks = {
     { name: "All Resources", href: "/resources" },
   ],
   Product: [
-    { name: "The Evasion Chat", href: "https://evasionchat.pinktree.co" },
+    { name: "The Evasion Chat", href: "https://evasionchat.pinktreee.com" },
     { name: "Platform Overview", href: "/platform" },
-    { name: "Pricing", href: "https://evasionchat.pinktree.co/pricing" },
+    { name: "Pricing", href: "https://evasionchat.pinktreee.com/pricing" },
   ],
   "Get Started": [
     { name: "Book a Consultation", href: "/book-consultation" },
@@ -131,13 +131,30 @@ export function FooterSection() {
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-8 gap-y-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2">
-              <a href="/" className="inline-flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display text-white">PINK TREE</span>
-                <span className="text-xs text-white/40 font-mono">TM</span>
+        
+              <a href="/" className="flex items-center gap-2 group">
+                <span
+                  className={`font-display tracking-tight transition-all duration-500 ${
+                    isScrolled ? "text-xl text-foreground" : "text-2xl text-white"
+                  }`}
+                >
+                  PINK TREE
+                  <span className="text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.9)] animate-pulse">
+                    E
+                  </span>
+                </span>
+              
+                <span
+                  className={`font-mono transition-all duration-500 ${
+                    isScrolled
+                      ? "text-[10px] mt-0.5 text-muted-foreground"
+                      : "text-xs mt-1 text-white/60"
+                  }`}
+                ></span>
               </a>
 
               <p className="text-white/50 leading-relaxed mb-8 max-w-xs text-sm">
-                We build custom AI solutions — workflow automation, AI agents, and enterprise integrations — for businesses that need more than off-the-shelf software.
+                We build custom AI solutions — workflow automation, AI agents, and enterprise integrations — for businesses that want to adapt & Grow.
               </p>
 
               {/* Social Links */}
