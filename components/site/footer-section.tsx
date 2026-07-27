@@ -132,25 +132,13 @@ export function FooterSection() {
             {/* Brand Column */}
             <div className="col-span-2">
         
-              <a href="/" className="flex items-center gap-2 group">
-                <span
-                  className={`font-display tracking-tight transition-all duration-500 ${
-                    isScrolled ? "text-xl text-foreground" : "text-2xl text-white"
-                  }`}
-                >
+              <a href="/" className="flex items-center gap-2 group mb-6">
+                <span className="font-display text-2xl tracking-tight text-white transition-all duration-300">
                   PINK TREE
-                  <span className="text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.9)] animate-pulse">
+                  <span className="ml-[1px] text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.9)] group-hover:text-pink-300 group-hover:drop-shadow-[0_0_18px_rgba(244,114,182,1)] transition-all duration-500">
                     E
                   </span>
                 </span>
-              
-                <span
-                  className={`font-mono transition-all duration-500 ${
-                    isScrolled
-                      ? "text-[10px] mt-0.5 text-muted-foreground"
-                      : "text-xs mt-1 text-white/60"
-                  }`}
-                ></span>
               </a>
 
               <p className="text-white/50 leading-relaxed mb-8 max-w-xs text-sm">
