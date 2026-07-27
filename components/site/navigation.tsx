@@ -83,7 +83,7 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="https://evasionchat.pinktreee.com" className={`transition-all duration-500 ${isScrolled ? "text-xs text-foreground/70 hover:text-foreground" : "text-sm text-white/70 hover:text-white"}`}>
+            <a href="https://evasion.pinktreee.com" className={`transition-all duration-500 ${isScrolled ? "text-xs text-foreground/70 hover:text-foreground" : "text-sm text-white/70 hover:text-white"}`}>
               The Evasion Chat ↗
             </a>
             <Button
@@ -181,7 +181,7 @@ export function Navigation() {
               className="flex-1 rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <Link href="https://evasionchat.pinktreee.com">The Evasion Chat ↗</Link>
+              <Link href="https://evasion.pinktreee.com">The Evasion Chat ↗</Link>
             </Button>
             <Button 
               asChild
