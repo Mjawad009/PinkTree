@@ -5,10 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Trash2, Plus } from "lucide-react";
-import type { BlogPost } from "@/lib/blog-store";
+import { Trash2, Plus, X } from "lucide-react";
+import type { BlogPost, BlogSection } from "@/lib/blog-store";
 
 const SESSION_KEY = "admin_password";
+
+type DraftSection = {
+  heading: string;
+  body: string; // raw textarea value; blank line separates paragraphs
+};
+
+const emptySection = (): DraftSection => ({ heading: "", body: "" });
 
 export default function AdminBlogPage() {
   const [password, setPassword] = useState("");
@@ -22,7 +29,12 @@ export default function AdminBlogPage() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [excerpt, setExcerpt] = useState("");
-  const [content, setContent] = useState("");
+  const [quickAnswer, setQuickAnswer] = useState("");
+  const [tags, setTags] = useState("");
+  const [image, setImage] = useState("");
+  const [imageAlt, setImageAlt] = useState("");
+  const [sections, setSections] = useState<DraftSection[]>([emptySection()]);
+
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -67,12 +79,55 @@ export default function AdminBlogPage() {
     setLoading(false);
   }
 
+  function updateSection(index: number, field: keyof DraftSection, value: string) {
+    setSections((prev) => {
+      const next = [...prev];
+      next[index] = { ...next[index], [field]: value };
+      return next;
+    });
+  }
+
+  function addSection() {
+    setSections((prev) => [...prev, emptySection()]);
+  }
+
+  function removeSection(index: number) {
+    setSections((prev) => (prev.length === 1 ? prev : prev.filter((_, i) => i !== index)));
+  }
+
+  function resetForm() {
+    setTitle("");
+    setCategory("");
+    setExcerpt("");
+    setQuickAnswer("");
+    setTags("");
+    setImage("");
+    setImageAlt("");
+    setSections([emptySection()]);
+  }
+
   async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setFormError("");
 
-    if (!title.trim() || !excerpt.trim() || !category.trim() || !content.trim()) {
-      setFormError("All fields are required.");
+    const cleanedSections: BlogSection[] = sections
+      .map((s) => ({
+        heading: s.heading.trim(),
+        body: s.body
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter(Boolean),
+      }))
+      .filter((s) => s.heading && s.body.length > 0);
+
+    if (
+      !title.trim() ||
+      !excerpt.trim() ||
+      !category.trim() ||
+      !quickAnswer.trim() ||
+      cleanedSections.length === 0
+    ) {
+      setFormError("Title, category, excerpt, quick answer, and at least one section are required.");
       return;
     }
 
@@ -84,14 +139,23 @@ export default function AdminBlogPage() {
         "Content-Type": "application/json",
         "x-admin-password": pw,
       },
-      body: JSON.stringify({ title, excerpt, category, content }),
+      body: JSON.stringify({
+        title,
+        excerpt,
+        category,
+        quickAnswer,
+        tags: tags
+          .split(",")
+          .map((t) => t.trim())
+          .filter(Boolean),
+        image: image.trim() || undefined,
+        imageAlt: imageAlt.trim() || undefined,
+        content: cleanedSections,
+      }),
     });
 
     if (res.ok) {
-      setTitle("");
-      setCategory("");
-      setExcerpt("");
-      setContent("");
+      resetForm();
       await refreshPosts();
     } else {
       const data = await res.json().catch(() => ({}));
@@ -176,7 +240,7 @@ export default function AdminBlogPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="category">Category</Label>
-              <Input id="category" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Support" />
+              <Input id="category" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="AI Solutions" />
             </div>
           </div>
 
@@ -192,14 +256,89 @@ export default function AdminBlogPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="content">Content</Label>
+            <Label htmlFor="quickAnswer">Quick answer</Label>
             <Textarea
-              id="content"
-              rows={10}
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder={"Write each paragraph separated by a blank line.\n\nLike this — a blank line between paragraphs becomes a new paragraph on the post."}
+              id="quickAnswer"
+              rows={2}
+              value={quickAnswer}
+              onChange={(e) => setQuickAnswer(e.target.value)}
+              placeholder="A 1-2 sentence direct answer to the implied search query — shown at the top of the post, for SEO/AI-search extraction."
             />
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
+            <div className="space-y-2">
+              <Label htmlFor="tags">Tags</Label>
+              <Input
+                id="tags"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+                placeholder="AI agents, chatbots, case study (comma separated)"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="image">Image URL</Label>
+              <Input
+                id="image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                placeholder="https://... (leave blank until a licensed image is chosen)"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="imageAlt">Image alt text</Label>
+            <Input
+              id="imageAlt"
+              value={imageAlt}
+              onChange={(e) => setImageAlt(e.target.value)}
+              placeholder="Describe the image for accessibility and SEO"
+            />
+          </div>
+
+          <div className="space-y-3 pt-2">
+            <div className="flex items-center justify-between">
+              <Label>Sections</Label>
+              <Button type="button" variant="outline" size="sm" onClick={addSection} className="rounded-full gap-1">
+                <Plus className="w-3.5 h-3.5" />
+                Add section
+              </Button>
+            </div>
+
+            {sections.map((section, index) => (
+              <div key={index} className="border border-foreground/10 rounded-xl p-5 space-y-3 relative">
+                {sections.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeSection(index)}
+                    className="absolute top-3 right-3 text-muted-foreground hover:text-red-400 transition-colors p-1"
+                    aria-label={`Remove section ${index + 1}`}
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+                <div className="space-y-2">
+                  <Label htmlFor={`heading-${index}`}>Heading</Label>
+                  <Input
+                    id={`heading-${index}`}
+                    value={section.heading}
+                    onChange={(e) => updateSection(index, "heading", e.target.value)}
+                    placeholder="e.g. Why this matters"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor={`body-${index}`}>Body</Label>
+                  <Textarea
+                    id={`body-${index}`}
+                    rows={6}
+                    value={section.body}
+                    onChange={(e) => updateSection(index, "body", e.target.value)}
+                    placeholder={"Write each paragraph separated by a blank line.\n\nLike this — a blank line between paragraphs becomes a new paragraph on the post."}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
 
           {formError && <p className="text-sm text-red-400">{formError}</p>}
