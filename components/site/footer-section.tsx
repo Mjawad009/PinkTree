@@ -71,7 +71,7 @@ export function FooterSection() {
               {/* Social Links */}
               <div className="flex gap-6 mb-6">
                 {socialLinks.map((link) => (
-                  
+                  <a
                     key={link.name}
                     href={link.href}
                     className="text-sm text-white/40 hover:text-white transition-colors flex items-center gap-1 group"
@@ -84,7 +84,7 @@ export function FooterSection() {
 
               {/* Contact actions — quiet pill buttons, consistent with the rest of the site */}
               <div className="flex flex-col gap-3 max-w-xs">
-                
+                <a
                   href="mailto:contact@pinktreee.com"
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full text-sm font-medium tracking-wide bg-white text-black hover:bg-pink-300 transition-colors duration-200"
                 >
@@ -92,7 +92,7 @@ export function FooterSection() {
                   <span>Email support</span>
                 </a>
 
-                
+                <a
                   href="https://wa.me"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -111,7 +111,7 @@ export function FooterSection() {
                 <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.name}>
-                      
+                      <a
                         href={link.href}
                         className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-2"
                       >
