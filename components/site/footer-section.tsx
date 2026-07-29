@@ -93,7 +93,7 @@ export function FooterSection() {
                 </a>
 
                 <a
-                  href="https://wa.me"
+                  href="https://api.whatsapp.com/send?phone=923364315089"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full text-sm font-medium tracking-wide border border-white/15 text-white/80 hover:border-pink-400/50 hover:text-white transition-colors duration-200"
