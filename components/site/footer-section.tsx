@@ -86,3 +86,64 @@ export function FooterSection() {
               <div className="flex flex-col gap-3 max-w-xs">
                 
                   href="mailto:contact@pinktreee.com"
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full text-sm font-medium tracking-wide bg-white text-black hover:bg-pink-300 transition-colors duration-200"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Email support</span>
+                </a>
+
+                
+                  href="https://wa.me"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full text-sm font-medium tracking-wide border border-white/15 text-white/80 hover:border-pink-400/50 hover:text-white transition-colors duration-200"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Link Columns */}
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title}>
+                <h3 className="text-sm font-medium text-white mb-6">{title}</h3>
+                <ul className="space-y-4">
+                  {links.map((link) => (
+                    <li key={link.name}>
+                      
+                        href={link.href}
+                        className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-2"
+                      >
+                        {link.name}
+                        {"badge" in link && link.badge && (
+                          <span className="text-xs px-2 py-0.5 bg-white text-black rounded-full">
+                            {link.badge}
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="py-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-white/30">
+            &copy; 2026 Pink Tree. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-4 text-sm text-white/30">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#eca8d6]" />
+              Parent company of The Evasion Chat
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
