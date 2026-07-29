@@ -6,7 +6,7 @@ import { guides } from "@/lib/guides-data";
 import { getAllPosts } from "@/lib/blog-store";
 
 // TODO: replace with your real production domain once deployed
-const BASE_URL = "https://pinktree.co";
+const BASE_URL = "https://pinktreee.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
