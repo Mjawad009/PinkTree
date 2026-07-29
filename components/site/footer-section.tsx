@@ -16,9 +16,9 @@ const footerLinks = {
     { name: "All Resources", href: "/resources" },
   ],
   Product: [
-    { name: "The Evasion Chat", href: "https://evasion.pinktreee.com" },
+    { name: "The Evasion Chat", href: "https://pinktreee.com" },
     { name: "Platform Overview", href: "/platform" },
-    { name: "Pricing", href: "https://evasion.pinktreee.com/pricing" },
+    { name: "Pricing", href: "https://pinktreee.com/pricing" },
   ],
   "Get Started": [
     { name: "Book a Consultation", href: "/book-consultation" },
@@ -29,80 +29,9 @@ const footerLinks = {
   ],
 };
 
-// Cleaned up social links array
 const socialLinks = [
   { name: "Email Us", href: "mailto:contact@pinktreee.com" },
 ];
-
-function AnimatedWaveCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationId: number;
-    let time = 0;
-    const dims = { w: 0, h: 0 };
-
-    const resize = () => {
-      dims.w = canvas.offsetWidth;
-      dims.h = canvas.offsetHeight;
-      canvas.width = dims.w * window.devicePixelRatio;
-      canvas.height = dims.h * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const animate = () => {
-      const { w: width, h: height } = dims;
-      ctx.clearRect(0, 0, width, height);
-
-      ctx.strokeStyle = "rgba(100, 200, 150, 0.3)";
-      ctx.lineWidth = 1;
-
-      for (let wave = 0; wave < 3; wave++) {
-        ctx.beginPath();
-        for (let x = 0; x <= width; x += 5) {
-          const y =
-            height * 0.5 +
-            Math.sin(x * 0.01 + time + wave * 0.5) * 30 +
-            Math.sin(x * 0.02 + time * 1.5 + wave) * 20;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      }
-
-      time += 0.02;
-      animationId = requestAnimationFrame(animate);
-    };
-
-    const visibilityObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          animate();
-        } else {
-          cancelAnimationFrame(animationId);
-        }
-      },
-      { threshold: 0 }
-    );
-    visibilityObserver.observe(canvas);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      visibilityObserver.disconnect();
-      cancelAnimationFrame(animationId);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="w-full h-full" />;
-}
 
 export function FooterSection() {
   return (
@@ -110,7 +39,7 @@ export function FooterSection() {
       {/* Panoramic banner image */}
       <div className="relative w-full h-[340px] md:h-[420px] overflow-hidden">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Upscaled%20Image%20%2810%29-UnDKstODkIENp5xqTYUEpt0Sm8tNOw.png"
+          src="https://vercel-storage.com"
           alt="Bioluminescent landscape"
           loading="lazy"
           decoding="async"
@@ -157,23 +86,44 @@ export function FooterSection() {
                 ))}
               </div>
 
-              {/* Direct Action Buttons */}
-              <div className="flex flex-col gap-2 max-w-xs">
+              {/* Premium Theme Action Buttons */}
+              <div className="flex flex-col gap-3 max-w-xs">
+                {/* Email Button - Solid Pink Glow Theme */}
                 <a
                   href="mailto:contact@pinktreee.com"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-white/10 hover:bg-white text-white hover:text-black rounded-lg text-sm font-medium border border-white/10 hover:border-white transition-all duration-200"
+                  className="relative group overflow-hidden flex items-center justify-center gap-2 w-full py-3 px-4 bg-pink-600 text-white rounded-lg text-sm font-semibold tracking-wide border border-pink-500 shadow-[0_0_15px_rgba(219,39,119,0.3)] hover:shadow-[0_0_25px_rgba(219,39,119,0.6)] hover:border-pink-400 transition-all duration-300"
                 >
-                  <Mail className="w-4 h-4" />
-                  Email Support
+                  {/* Sprinkles Canvas Effect Container */}
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.2),transparent_60%)]">
+                    <span className="absolute top-1/2 left-1/4 w-1 h-1 bg-white rounded-full animate-ping [animation-duration:1s]" />
+                    <span className="absolute top-1/3 left-2/3 w-1.5 h-1.5 bg-pink-200 rounded-full animate-ping [animation-duration:1.4s]" />
+                    <span className="absolute top-2/3 left-1/2 w-1 h-1 bg-white rounded-full animate-ping [animation-duration:0.8s]" />
+                    <span className="absolute top-1/4 left-3/4 w-1 h-1 bg-pink-300 rounded-full animate-ping [animation-duration:1.2s]" />
+                  </span>
+                  
+                  <Mail className="w-4 h-4 transition-transform group-hover:scale-110" />
+                  <span>Email Support</span>
                 </a>
+
+                {/* WhatsApp Button - Dark Border with Pink Hover Fill */}
                 <a
                   href="https://wa.me" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded-lg text-sm font-medium border border-emerald-500/20 hover:border-emerald-500 transition-all duration-200"
+                  className="relative group overflow-hidden flex items-center justify-center gap-2 w-full py-3 px-4 bg-transparent text-white/90 hover:text-white rounded-lg text-sm font-semibold tracking-wide border border-white/20 hover:border-pink-500/50 transition-all duration-300"
                 >
-                  <MessageSquare className="w-4 h-4" />
-                  Chat on WhatsApp
+                  {/* Sliding Pink Gradient Sparkle Underlay */}
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-600/0 via-pink-600/20 to-pink-600/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                  
+                  {/* Hover Sprinkles */}
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300">
+                    <span className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-pink-400 rounded-full animate-ping [animation-duration:0.9s]" />
+                    <span className="absolute top-1/4 left-1/2 w-1.5 h-1.5 bg-white rounded-full animate-ping [animation-duration:1.3s]" />
+                    <span className="absolute top-2/3 left-3/4 w-1 h-1 bg-pink-400 rounded-full animate-ping [animation-duration:1.1s]" />
+                  </span>
+
+                  <MessageSquare className="w-4 h-4 text-pink-400 group-hover:text-white transition-colors duration-300" />
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
             </div>
