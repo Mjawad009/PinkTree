@@ -7,7 +7,8 @@ export async function GET(request: NextRequest) {
   if (!isAdminAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json({ posts: getAllPosts() });
+  const posts = await getAllPosts();
+  return NextResponse.json({ posts });
 }
 
 function isValidSections(value: unknown): value is BlogSection[] {
@@ -47,9 +48,6 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Accept structured sections directly. Also accept a flat string/string[]
-  // (legacy format) and wrap it into a single untitled section, so older
-  // clients or scripts that haven't been updated don't hard-fail.
   let content: BlogSection[];
   if (isValidSections(body.content)) {
     content = body.content.map((s: BlogSection) => ({
@@ -79,7 +77,7 @@ export async function POST(request: NextRequest) {
     ? body.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
     : [];
 
-  const post = createPost({
+  const post = await createPost({
     title: body.title,
     excerpt: body.excerpt,
     category: body.category,
