@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, MessageSquare } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 const footerLinks = {
@@ -29,10 +29,9 @@ const footerLinks = {
   ],
 };
 
+// Cleaned up social links array
 const socialLinks = [
-  { name: "Email Us", href: "mailto:contac@pinktreee.com" },
-  { name: "", href: "#" },
-  { name: "", href: "#" },
+  { name: "Email Us", href: "mailto:contact@pinktreee.com" },
 ];
 
 function AnimatedWaveCanvas() {
@@ -145,7 +144,7 @@ export function FooterSection() {
               </p>
 
               {/* Social Links */}
-              <div className="flex gap-6">
+              <div className="flex gap-6 mb-6">
                 {socialLinks.map((link) => (
                   <a
                     key={link.name}
@@ -156,6 +155,26 @@ export function FooterSection() {
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </a>
                 ))}
+              </div>
+
+              {/* Direct Action Buttons */}
+              <div className="flex flex-col gap-2 max-w-xs">
+                <a
+                  href="mailto:contact@pinktreee.com"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-white/10 hover:bg-white text-white hover:text-black rounded-lg text-sm font-medium border border-white/10 hover:border-white transition-all duration-200"
+                >
+                  <Mail className="w-4 h-4" />
+                  Email Support
+                </a>
+                <a
+                  href="https://wa.me" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded-lg text-sm font-medium border border-emerald-500/20 hover:border-emerald-500 transition-all duration-200"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  Chat on WhatsApp
+                </a>
               </div>
             </div>
 
