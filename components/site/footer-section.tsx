@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowUpRight, Mail, MessageSquare } from "lucide-react";
-import { useEffect, useRef } from "react";
 
 const footerLinks = {
   Company: [
@@ -45,9 +44,7 @@ export function FooterSection() {
           decoding="async"
           className="w-full h-full object-cover object-center"
         />
-        {/* Gradient fade to black at bottom */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
-        {/* Subtle dark vignette on sides */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
       </div>
 
@@ -58,7 +55,6 @@ export function FooterSection() {
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-8 gap-y-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2">
-        
               <a href="/" className="flex items-center gap-2 group mb-6">
                 <span className="font-display text-2xl tracking-tight text-white transition-all duration-300">
                   PINK TREE
@@ -75,7 +71,7 @@ export function FooterSection() {
               {/* Social Links */}
               <div className="flex gap-6 mb-6">
                 {socialLinks.map((link) => (
-                  <a
+                  
                     key={link.name}
                     href={link.href}
                     className="text-sm text-white/40 hover:text-white transition-colors flex items-center gap-1 group"
@@ -86,43 +82,23 @@ export function FooterSection() {
                 ))}
               </div>
 
-              {/* Premium Theme Action Buttons */}
+              {/* Contact actions — quiet pill buttons, consistent with the rest of the site */}
               <div className="flex flex-col gap-3 max-w-xs">
-                {/* Email Button - Solid Pink Glow Theme */}
-                <a
+                
                   href="mailto:contact@pinktreee.com"
-                  className="relative group overflow-hidden flex items-center justify-center gap-2 w-full py-3 px-4 bg-pink-600 text-white rounded-lg text-sm font-semibold tracking-wide border border-pink-500 shadow-[0_0_15px_rgba(219,39,119,0.3)] hover:shadow-[0_0_25px_rgba(219,39,119,0.6)] hover:border-pink-400 transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full text-sm font-medium tracking-wide bg-white text-black hover:bg-pink-300 transition-colors duration-200"
                 >
-                  {/* Sprinkles Canvas Effect Container */}
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.2),transparent_60%)]">
-                    <span className="absolute top-1/2 left-1/4 w-1 h-1 bg-white rounded-full animate-ping [animation-duration:1s]" />
-                    <span className="absolute top-1/3 left-2/3 w-1.5 h-1.5 bg-pink-200 rounded-full animate-ping [animation-duration:1.4s]" />
-                    <span className="absolute top-2/3 left-1/2 w-1 h-1 bg-white rounded-full animate-ping [animation-duration:0.8s]" />
-                    <span className="absolute top-1/4 left-3/4 w-1 h-1 bg-pink-300 rounded-full animate-ping [animation-duration:1.2s]" />
-                  </span>
-                  
-                  <Mail className="w-4 h-4 transition-transform group-hover:scale-110" />
-                  <span>Email Support</span>
+                  <Mail className="w-4 h-4" />
+                  <span>Email support</span>
                 </a>
 
-                {/* WhatsApp Button - Dark Border with Pink Hover Fill */}
-                <a
-                  href="https://wa.me" 
+                
+                  href="https://wa.me"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative group overflow-hidden flex items-center justify-center gap-2 w-full py-3 px-4 bg-transparent text-white/90 hover:text-white rounded-lg text-sm font-semibold tracking-wide border border-white/20 hover:border-pink-500/50 transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full text-sm font-medium tracking-wide border border-white/15 text-white/80 hover:border-pink-400/50 hover:text-white transition-colors duration-200"
                 >
-                  {/* Sliding Pink Gradient Sparkle Underlay */}
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-600/0 via-pink-600/20 to-pink-600/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-                  
-                  {/* Hover Sprinkles */}
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300">
-                    <span className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-pink-400 rounded-full animate-ping [animation-duration:0.9s]" />
-                    <span className="absolute top-1/4 left-1/2 w-1.5 h-1.5 bg-white rounded-full animate-ping [animation-duration:1.3s]" />
-                    <span className="absolute top-2/3 left-3/4 w-1 h-1 bg-pink-400 rounded-full animate-ping [animation-duration:1.1s]" />
-                  </span>
-
-                  <MessageSquare className="w-4 h-4 text-pink-400 group-hover:text-white transition-colors duration-300" />
+                  <MessageSquare className="w-4 h-4" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>
@@ -135,7 +111,7 @@ export function FooterSection() {
                 <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.name}>
-                      <a
+                      
                         href={link.href}
                         className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-2"
                       >
@@ -152,22 +128,3 @@ export function FooterSection() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="py-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/30">
-            &copy; 2026 Pink Tree. All rights reserved.
-          </p>
-
-          <div className="flex items-center gap-4 text-sm text-white/30">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#eca8d6]" />
-              Parent company of The Evasion Chat
-            </span>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
