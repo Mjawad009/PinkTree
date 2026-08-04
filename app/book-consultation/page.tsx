@@ -72,7 +72,7 @@ export default function BookConsultationPage() {
     };
 
     try {
-      const res = await fetch("/api/lead", {
+      const res = await fetch("/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ formName: "Book a Consultation", fields }),
