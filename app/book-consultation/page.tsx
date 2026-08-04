@@ -52,13 +52,42 @@ const consultationFaqs = [
 export default function BookConsultationPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    setIsSubmitting(false);
-    setSubmitted(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const fields = {
+      name: formData.get("name"),
+      company: formData.get("company"),
+      email: formData.get("email"),
+      industry: formData.get("industry"),
+      "project-type": formData.get("project-type"),
+      budget: formData.get("budget"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formName: "Book a Consultation", fields }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Submission failed");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong sending your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -193,6 +222,12 @@ export default function BookConsultationPage() {
                   <p className="text-xs text-muted-foreground font-mono">
                     No obligation. Just a straight answer on fit.
                   </p>
+
+                  {error && (
+                    <p className="text-sm text-red-500" role="alert">
+                      {error}
+                    </p>
+                  )}
                 </form>
               )}
             </div>
